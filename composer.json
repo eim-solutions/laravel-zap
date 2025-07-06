@@ -1,6 +1,6 @@
 {
-    "name": "laraveljutsu/zap",
-    "description": "A flexible, performant, and developer-friendly schedule management system for Laravel",
+    "name": "businesspress/zap",
+    "description": "A flexible, performant, and developer-friendly schedule management system for Laravel by Laravel Jutsu tweaked for BusinessPress",
     "type": "library",
     "keywords": ["laravel", "schedule", "management", "calendar", "booking"],
     "license": "MIT",
@@ -9,6 +9,11 @@
             "name": "Laravel Jutsu",
             "email": "ludo@epekta.com",
             "homepage": "https://laraveljutsu.net"
+        },
+        {
+            "name": "Vukasin Jockovic",
+            "email": "wookashin@businesspress.io",
+            "homepage": "https://businesspress.io"
         }
     ],
     "require": {
