@@ -531,7 +531,7 @@ class ValidationService
 
         // Create a temporary schedule for conflict checking
         $tempSchedule = new \Zap\Models\Schedule([
-            'schedulable_type' => get_class($schedulable),
+            'schedulable_type' => get_model_alias($schedulable),
             'schedulable_id' => $schedulable->getKey(),
             'start_date' => $attributes['start_date'],
             'end_date' => $attributes['end_date'] ?? null,

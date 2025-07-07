@@ -4,6 +4,8 @@ namespace Zap\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use BusinessPress\Core\Models\BaseModel;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -21,8 +23,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read Carbon $start_date_time
  * @property-read Carbon $end_date_time
  */
-class SchedulePeriod extends Model
+class SchedulePeriod extends BaseModel
 {
+    use HasUuids;
+
+    protected $table = 'schedule_periods';
+
     /**
      * The attributes that are mass assignable.
      */

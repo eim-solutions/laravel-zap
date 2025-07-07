@@ -3,9 +3,12 @@
 namespace Zap\Models;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\Model;
+use BusinessPress\Core\Models\BaseModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
@@ -30,8 +33,10 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property-read Model $schedulable
  * @property-read int $total_duration
  */
-class Schedule extends Model
+class Schedule extends BaseModel
 {
+    use HasUuids;
+    
     /**
      * Schedule type constants.
      */
@@ -42,6 +47,8 @@ class Schedule extends Model
     public const TYPE_BLOCKED = 'blocked';
 
     public const TYPE_CUSTOM = 'custom';
+
+    protected $table = 'schedules';
 
     /**
      * The attributes that are mass assignable.
@@ -83,6 +90,11 @@ class Schedule extends Model
      */
     public function schedulable(): MorphTo
     {
+        Log::info('Current morph map when creating schedulable relationship:', [
+            'morph_map' => \Illuminate\Database\Eloquent\Relations\Relation::$morphMap,
+            'schedulable_type' => $this->schedulable_type ?? 'not set yet'
+        ]);
+    
         return $this->morphTo();
     }
 

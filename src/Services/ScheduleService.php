@@ -38,7 +38,7 @@ class ScheduleService
 
             // Create the schedule
             $schedule = new Schedule($attributes);
-            $schedule->schedulable_type = get_class($schedulable);
+            $schedule->schedulable_type = get_model_alias($schedulable);
             $schedule->schedulable_id = $schedulable->getKey();
             $schedule->save();
 

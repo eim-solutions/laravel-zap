@@ -137,7 +137,7 @@ trait HasSchedules
     public function isAvailableAt(string $date, string $startTime, string $endTime): bool
     {
         // Get all active schedules for this model on this date
-        $schedules = \Zap\Models\Schedule::where('schedulable_type', get_class($this))
+        $schedules = \Zap\Models\Schedule::where('schedulable_type', get_model_alias($this))
             ->where('schedulable_id', $this->getKey())
             ->active()
             ->forDate($date)
